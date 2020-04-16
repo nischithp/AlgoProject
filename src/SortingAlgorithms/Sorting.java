@@ -1,6 +1,7 @@
+package SortingAlgorithms;
 import java.util.Scanner;
 
-public class BubbleSort {
+public class Sorting {
 
 	static Scanner sc= new Scanner(System.in);
 	
