@@ -23,11 +23,16 @@ public class BubbleSort {
 					+ "8. Exit");
 			
 			operation = sc.nextInt();
-			System.out.println(operation);
+			
 			switch(operation) {
 			case 1: bubbleSort();	
 					break;
-			case 2: mergeSort();	
+			case 2: enteredArray enteredMergeArray = getArray();
+					int n = enteredMergeArray.n;
+					int a[] = enteredMergeArray.a;
+					mergeSort(a,0,n);
+					System.out.print("Sorted Array is : \n | ");
+					printArray(a,a.length);
 					break;
 			case 3: heapSort();	
 					break;
@@ -73,27 +78,77 @@ public class BubbleSort {
 		
 	}
 
-	private static void mergeSort() {
-		// TODO Auto-generated method stub
+	private static void mergeSort(int a[], int left, int right) {
+
+		if(left < right)  
+		{
+			int mid;   
+			mid = (left + right)/2;
+			mergeSort(a , left , mid);  //left sub array - mergeSort
+			mergeSort(a , mid+1, right); //right sub array - mergeSort
+			merge(a, left ,mid , right); // merge operation 
+		}
+	}
+	
+	public static void merge(int arr[],int l,int mid,int r)
+	{
+		int n1 = (mid-l+1);  //getting size of left sub array
+		int n2 = r-mid;     //getting size of right sub array
+		int left[] = new int[n1]; 
+		int right[] = new int[n2];
+		int i;
 		
+		for (i=0;i<n1;i++)
+		{
+			left[i] = arr[l+i];   
+		}
+		
+		for (i=0;i<n2;i++)
+		{
+			right[i] = arr[mid+1+i];
+		}
+		
+		int leftiindex,rightIndex,arrayIndex;     
+		leftiindex = 0;	//left index
+		rightIndex = 0;	//right index
+		arrayIndex = l;	//array index
+		
+		while (leftiindex<n1 && rightIndex <n2)
+		{
+			if (left[leftiindex]<=right[rightIndex])	// minimum element will be placed in sorted sub array
+			{
+				arr[arrayIndex] = left[leftiindex];
+				arrayIndex++;
+				leftiindex++;
+			}
+			else
+			{
+				arr[arrayIndex] = right[rightIndex];
+				arrayIndex++;
+				rightIndex++;
+			}
+		}
+		
+		while(leftiindex < n1)	// copy remaining elements of left sub array into the merged array
+		{
+			arr[arrayIndex] = left[leftiindex];
+			arrayIndex++;
+			leftiindex++;
+		}
+		
+		while(rightIndex < n2)	//copy remaining elements of right sub array into the merged array
+		{
+			arr[arrayIndex] = right[rightIndex];
+			arrayIndex++;
+			rightIndex++;
+		}
 	}
 
 	private static void bubbleSort() {
 		
-		// Reading elements 
-		System.out.println("Enter the length of the array to be sorted");
-		int n = sc.nextInt();
-		int[] a = new int[100];
-		System.out.print("Enter the array elements one by one\n");
-		for(int i=0; i<n; i++) {
-			a[i] = sc.nextInt();
-		}
-		
-		//Entered Array
-		System.out.print("Entered Array is:\n | ");
-		for(int i=0; i<n ; i++) {
-			System.out.print(a[i]+" | ");
-		}
+		enteredArray enteredBubbleArray = getArray();
+		int a[] = enteredBubbleArray.a;
+		int n = enteredBubbleArray.n;
 		
 		//Sorting begins here
 		boolean flag = false;
@@ -102,9 +157,9 @@ public class BubbleSort {
 			flag = true;
 			for(int i=0; i<n; i++) {
 				if (a[i] > a[i+1]) {
-					temp = a[i];
-					a[i] = a[i+1];
-					a[i+1] = temp;
+					temp = a[i+1];
+					a[i+1] = a[i];
+					a[i] = temp;
 					flag = false;
 				}
 			}
@@ -113,5 +168,50 @@ public class BubbleSort {
 		for(int i=1; i<n+1 ; i++) {
 			System.out.print(a[i]+" | ");
 		}
+	}
+	
+
+	
+	//Helper functions and classes
+	public static enteredArray getArray() {
+		// Reading elements 
+		System.out.println("Enter the length of the array to be sorted");
+		int n = sc.nextInt();
+		int[] a = new int[n+1];
+		System.out.print("Enter the array elements one by one\n");
+		for(int i=0; i<n; i++) {
+			a[i] = sc.nextInt();
+		}
+		
+		//Entered Array
+		System.out.print("Entered Array is:\n | ");
+		for(int i=0; i<n; i++) {
+			System.out.print(a[i]+ " | ");
+		}
+		System.out.println();
+
+		enteredArray enteredarray = new enteredArray(a,n); 
+		return enteredarray;
+	}
+	
+	public static void printArray(int a[], int n)
+	{
+		int n1 = a.length;
+		
+		for (int i=1; i<n1; ++i)
+			System.out.print(a[i] + " | ");
+		
+		System.out.println();
+	}
+	
+}
+
+ class enteredArray {
+	int[] a;
+	int n;
+	
+	public enteredArray(int[] a, int n) {
+		this.a = a;
+		this.n = n;
 	}
 }
