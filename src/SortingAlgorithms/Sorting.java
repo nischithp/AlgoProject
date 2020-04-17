@@ -11,8 +11,7 @@ public class Sorting {
 		while(true) {
 			System.out.println("\n\n-------------------DAA Project-----------------------\n\n"
 					+ "-----------Sorting Algorithms - Question 1------------\n\n"
-					+ "Name: Nischith Javagal Panish\n"
-					+ "Student ID Number: 1001780908\n"
+					+ "Team: Nischith Javagal Panish (1001780908) and Prajwal Prasad (1001750483) \n"
 					+ "Enter the number assosiated with the operation you want to perform or press 8 to exit:\n"
 					+ "1. Bubble Sort\n"
 					+ "2. Mergesort\r\n" 
@@ -35,13 +34,31 @@ public class Sorting {
 					System.out.print("Sorted Array is : \n | ");
 					printArray(a,a.length);
 					break;
-			case 3: heapSort();	
+			case 3: enteredArray enteredHeapArray = getArray();
+					int h[] = enteredHeapArray.a;
+					HeapSort.heapSort(h);	
+					System.out.print("Sorted Array is : \n | ");
+					printArray(h,h.length);
 					break;
-			case 4: quickSort();	
+			case 4: enteredArray enteredQuickSortArray = getArray();
+					int qn = enteredQuickSortArray.n;
+					int q[] = enteredQuickSortArray.a;
+					QuickSort.quickSort(q, 0, qn);
+					System.out.print("Sorted Array is : \n | ");
+					printArray(q,q.length);
 					break;
-			case 5: quickSortMedian();	
+			case 5: enteredArray enteredQS3MedianArray = getArray();
+					int qn3 = enteredQS3MedianArray.n;
+					int qs3[] = enteredQS3MedianArray.a;	
+					QuickSort3Median.quickSortMedian(qs3, 0, qn3); 
+					System.out.print("Sorted Array is : \n | ");
+					printArray(qs3,qs3.length);
 					break;
-			case 6: insertionSort();	
+			case 6: enteredArray enteredInsertionSortArray = getArray();
+					int i[] = enteredInsertionSortArray.a;	
+					InsertionSort.insertionSort(i);
+					System.out.print("Sorted Array is : \n | ");
+					printArray(i,i.length);
 					break;
 			case 7: selectionSort();	
 					break;
@@ -71,26 +88,7 @@ public class Sorting {
         }
 	}
 
-	private static void insertionSort() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private static void quickSortMedian() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private static void quickSort() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private static void heapSort() {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	private static void mergeSort(int a[], int left, int right) {
 
 		if(left < right)  
