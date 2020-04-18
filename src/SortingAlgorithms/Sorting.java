@@ -27,13 +27,13 @@ public class Sorting {
 			operation = sc.nextInt();
 			Instant start, end;
 			switch(operation) {
-			case 1: bubbleSort();	
+			case 1: BubbleSort.bubbleSort();	
 					break;
 			case 2: enteredArray enteredMergeArray = getArray();
 					int n = enteredMergeArray.n;
 					int a[] = enteredMergeArray.a;
 					start = Instant.now();
-					mergeSort(a,0,n);
+					MergeSort.mergeSort(a,0,n);
 					end = Instant.now();
 					System.out.println("Sorted Array is : \n | ");
 					printArray(a,a.length);
@@ -77,7 +77,7 @@ public class Sorting {
 					printArray(i,i.length);
 					System.out.println("Run time is: "+Duration.between(start, end).toMillis()+" ms");
 					break;
-			case 7: selectionSort();	
+			case 7: SelectionSort.selectionSort();	
 					break;
 			case 8: System.exit(0);
 					break;
