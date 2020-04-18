@@ -25,12 +25,12 @@ public class Sorting {
 			operation = sc.nextInt();
 			
 			switch(operation) {
-			case 1: bubbleSort();	
+			case 1: BubbleSort.bubbleSort();	
 					break;
 			case 2: enteredArray enteredMergeArray = getArray();
 					int n = enteredMergeArray.n;
 					int a[] = enteredMergeArray.a;
-					mergeSort(a,0,n);
+					MergeSort.mergeSort(a,0,n);
 					System.out.print("Sorted Array is : \n | ");
 					printArray(a,a.length);
 					break;
@@ -60,7 +60,9 @@ public class Sorting {
 					System.out.print("Sorted Array is : \n | ");
 					printArray(i,i.length);
 					break;
-			case 7: selectionSort();	
+			case 7: int[] selectionSortedArray = SelectionSort.selectionSort();	
+					System.out.print("Sorted Array is : \n | ");
+					printArray(selectionSortedArray, selectionSortedArray.length);
 					break;
 			case 8: System.exit(0);
 					break;
@@ -71,116 +73,8 @@ public class Sorting {
 
 	}
 
-	private static void selectionSort() {
-		
-		enteredArray enteredArray = getArray();
-		int[] a = enteredArray.a;
-		int n = enteredArray.n;
-		for (int i = 0; i < a.length - 1; i++) {
-            int index = i;
-            for (int j = i + 1; j < a.length; j++)
-                if (a[j] < a[index]) 
-                    index = j;
- 
-            int smallerNumber = a[index];  
-            a[index] = a[i];
-            a[i] = smallerNumber;
-        }
-	}
 
-	
-	private static void mergeSort(int a[], int left, int right) {
 
-		if(left < right)  
-		{
-			int mid;   
-			mid = (left + right)/2;
-			mergeSort(a , left , mid);  //left sub array - mergeSort
-			mergeSort(a , mid+1, right); //right sub array - mergeSort
-			merge(a, left ,mid , right); // merge operation 
-		}
-	}
-	
-	public static void merge(int arr[],int l,int mid,int r)
-	{
-		int n1 = (mid-l+1);  //getting size of left sub array
-		int n2 = r-mid;     //getting size of right sub array
-		int left[] = new int[n1]; 
-		int right[] = new int[n2];
-		int i;
-		
-		for (i=0;i<n1;i++)
-		{
-			left[i] = arr[l+i];   
-		}
-		
-		for (i=0;i<n2;i++)
-		{
-			right[i] = arr[mid+1+i];
-		}
-		
-		int leftiindex,rightIndex,arrayIndex;     
-		leftiindex = 0;	//left index
-		rightIndex = 0;	//right index
-		arrayIndex = l;	//array index
-		
-		while (leftiindex<n1 && rightIndex <n2)
-		{
-			if (left[leftiindex]<=right[rightIndex])	// minimum element will be placed in sorted sub array
-			{
-				arr[arrayIndex] = left[leftiindex];
-				arrayIndex++;
-				leftiindex++;
-			}
-			else
-			{
-				arr[arrayIndex] = right[rightIndex];
-				arrayIndex++;
-				rightIndex++;
-			}
-		}
-		
-		while(leftiindex < n1)	// copy remaining elements of left sub array into the merged array
-		{
-			arr[arrayIndex] = left[leftiindex];
-			arrayIndex++;
-			leftiindex++;
-		}
-		
-		while(rightIndex < n2)	//copy remaining elements of right sub array into the merged array
-		{
-			arr[arrayIndex] = right[rightIndex];
-			arrayIndex++;
-			rightIndex++;
-		}
-	}
-
-	private static void bubbleSort() {
-		
-		enteredArray enteredBubbleArray = getArray();
-		int a[] = enteredBubbleArray.a;
-		int n = enteredBubbleArray.n;
-		
-		//Sorting begins here
-		boolean flag = false;
-		int temp;
-		while(!flag) {
-			flag = true;
-			for(int i=0; i<n; i++) {
-				if (a[i] > a[i+1]) {
-					temp = a[i+1];
-					a[i+1] = a[i];
-					a[i] = temp;
-					flag = false;
-				}
-			}
-		}
-		System.out.print("\n\nSorted array is:\n | ");
-		for(int i=1; i<n+1 ; i++) {
-			System.out.print(a[i]+" | ");
-		}
-	}
-	
 
 	
 	//Helper functions and classes
