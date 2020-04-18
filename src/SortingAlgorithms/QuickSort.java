@@ -3,28 +3,28 @@ package SortingAlgorithms;
 //1001750483
 public class QuickSort {
 
-    static void quickSort(int arr[], int lower, int upper) { // arr: array to be sorted, lower: lower index, upper: upper index
-        if (lower >= upper)
+    static void quickSort(int arr[], int low, int high) { // arr: array to be sorted, low: lower index, high: upper index
+        if (low >= high) //stop when low>high
             return;
-        int p = partition(arr, lower, upper);
-        quickSort(arr, lower, p - 1);
-        quickSort(arr, p + 1, upper);
+        int p = partition(arr, low, high);
+        quickSort(arr, low, p - 1);
+        quickSort(arr, p + 1, high);
     }
 
-    private static int partition(int arr[], int lower, int upper) {// arr: array to be sorted, lower: lower index, upper: upper index
-        int pivot = arr[upper];
-        int j = lower;
+    private static int partition(int arr[], int low, int high) {// arr: array to be sorted, low: lower index, high: upper index
+        int pivot = arr[high]; //make upper index as pivot
+        int j = low;
         int tmp;
-        for (int i = lower; i <= upper; i++) {
-            if (arr[i] < pivot) {
+        for (int i = low; i <= high; i++) {
+            if (arr[i] < pivot) { //swap if current ele is less than pivot
                 tmp = arr[i];
                 arr[i] = arr[j];
                 arr[j] = tmp;
-                j++;
+                j++; //increment low val
             }
         }
-        tmp = arr[upper];
-        arr[upper] = arr[j];
+        tmp = arr[high]; //swap high and arr[j]
+        arr[high] = arr[j];
         arr[j] = tmp;
 
         return j; //returns index of pivot element
