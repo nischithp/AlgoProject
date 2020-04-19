@@ -1,4 +1,6 @@
 package SortingAlgorithms;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Scanner;
 
 public class Sorting {
@@ -23,49 +25,59 @@ public class Sorting {
 					+ "8. Exit");
 			
 			operation = sc.nextInt();
-			
+			Instant start, end;
 			switch(operation) {
 			case 1: BubbleSort.bubbleSort();	//Bubble Sort
 					break;
 			case 2: enteredArray enteredMergeArray = getArray(); //Merge Sort
 					int n = enteredMergeArray.n;
 					int a[] = enteredMergeArray.a;
-					long startTime = System.currentTimeMillis();
+					start = Instant.now();
 					MergeSort.mergeSort(a,0,n);
-					long endTime = System.currentTimeMillis();
-					System.out.println("\n Runtime: "+(endTime - startTime)/1000 + " ms");
-					System.out.print("Sorted Array is : \n | ");
+					end = Instant.now();
+					System.out.println("Sorted Array is : \n | ");
 					printArray(a,a.length);
+					System.out.println("Run time is: "+Duration.between(start, end).toMillis()+" ms");
 					break;
 			case 3: enteredArray enteredHeapArray = getArray(); //Heap Sort
 					int h[] = enteredHeapArray.a;
+					start = Instant.now();
 					HeapSort.heapSort(h);	
+					end = Instant.now();
 					System.out.print("Sorted Array is : \n | ");
 					printArray(h,h.length);
+					System.out.println("Run time is: "+Duration.between(start, end).toMillis()+" ms");
 					break;
 			case 4: enteredArray enteredQuickSortArray = getArray();
 					int qn = enteredQuickSortArray.n;
 					int q[] = enteredQuickSortArray.a;
+					start = Instant.now();
 					QuickSort.quickSort(q, 0, qn);
+					end = Instant.now();					
 					System.out.print("Sorted Array is : \n | ");
 					printArray(q,q.length);
+					System.out.println("Run time is: "+Duration.between(start, end).toMillis()+" ms");
 					break;
 			case 5: enteredArray enteredQS3MedianArray = getArray();
 					int qn3 = enteredQS3MedianArray.n;
 					int qs3[] = enteredQS3MedianArray.a;	
+					start = Instant.now();
 					QuickSort3Median.quickSortMedian(qs3, 0, qn3); 
+					end = Instant.now();				
 					System.out.print("Sorted Array is : \n | ");
 					printArray(qs3,qs3.length);
+					System.out.println("Run time is: "+Duration.between(start, end).toMillis()+" ms");
 					break;
 			case 6: enteredArray enteredInsertionSortArray = getArray();
-					int i[] = enteredInsertionSortArray.a;	
+					int i[] = enteredInsertionSortArray.a;
+					start = Instant.now();
 					InsertionSort.insertionSort(i);
+					end = Instant.now();
 					System.out.print("Sorted Array is : \n | ");
 					printArray(i,i.length);
+					System.out.println("Run time is: "+Duration.between(start, end).toMillis()+" ms");
 					break;
-			case 7: int[] selectionSortedArray = SelectionSort.selectionSort();	
-					System.out.print("Sorted Array is : \n | ");
-					printArray(selectionSortedArray, selectionSortedArray.length);
+			case 7: SelectionSort.selectionSort();	
 					break;
 			case 8: System.exit(0);
 					break;
@@ -75,9 +87,6 @@ public class Sorting {
 		}
 
 	}
-
-
-
 
 	
 	//Helper functions and classes
