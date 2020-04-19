@@ -2,7 +2,7 @@ package SortingAlgorithms;
 //Prajwal Prasad
 //1001750483
 public class InsertionSort {
-	static void insertionSort(int arr[]) {
+	static void insertionSort(int arr[]) { //arr: input array to be sorted
         int length = arr.length, temp, j;
         for (int i = 1; i < length; i++) {
             temp = arr[i]; //assign current element to temp
