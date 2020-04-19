@@ -7,6 +7,8 @@ public class BubbleSort {
 
 	public static void bubbleSort() {
 		
+		long startTime = System.currentTimeMillis();
+	
 		enteredArray enteredBubbleArray = Sorting.getArray();
 		int a[] = enteredBubbleArray.a;
 		int n = enteredBubbleArray.n;
@@ -25,6 +27,10 @@ public class BubbleSort {
 				}
 			}
 		}
+		
+		long endTime = System.currentTimeMillis();
+		System.out.println("\n Runtime: "+(endTime - startTime)/1000 + " ms");
+		
 		System.out.print("\n\nSorted array is:\n | ");
 		for(int i=1; i<n+1 ; i++) {
 			System.out.print(a[i]+" | ");

@@ -25,16 +25,19 @@ public class Sorting {
 			operation = sc.nextInt();
 			
 			switch(operation) {
-			case 1: BubbleSort.bubbleSort();	
+			case 1: BubbleSort.bubbleSort();	//Bubble Sort
 					break;
-			case 2: enteredArray enteredMergeArray = getArray();
+			case 2: enteredArray enteredMergeArray = getArray(); //Merge Sort
 					int n = enteredMergeArray.n;
 					int a[] = enteredMergeArray.a;
+					long startTime = System.currentTimeMillis();
 					MergeSort.mergeSort(a,0,n);
+					long endTime = System.currentTimeMillis();
+					System.out.println("\n Runtime: "+(endTime - startTime)/1000 + " ms");
 					System.out.print("Sorted Array is : \n | ");
 					printArray(a,a.length);
 					break;
-			case 3: enteredArray enteredHeapArray = getArray();
+			case 3: enteredArray enteredHeapArray = getArray(); //Heap Sort
 					int h[] = enteredHeapArray.a;
 					HeapSort.heapSort(h);	
 					System.out.print("Sorted Array is : \n | ");

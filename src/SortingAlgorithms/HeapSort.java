@@ -3,14 +3,19 @@ package SortingAlgorithms;
 //1001750483
 public class HeapSort {
 	public static void heapSort(int arr[]) {
+		long startTime = System.currentTimeMillis();
+
         makeMaxHeap(arr);
         int tmp;
+        
         for (int i = arr.length - 1; i > 0; i--) {
             tmp = arr[0];
             arr[0] = arr[i];
             arr[i] = tmp;
             heapAdjust(arr, 0, i);
         }
+		long endTime = System.currentTimeMillis();
+		System.out.println("\n Runtime: "+(endTime - startTime)/1000 + " ms");
 	}
 	public static void makeMaxHeap(int arr[]) {
         int len = arr.length;

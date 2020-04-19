@@ -5,6 +5,7 @@ public class MergeSort {
 	// Name: 		Nischith Panish Javagal 
 	// Student ID: 	1001780908
 	public static void mergeSort(int a[], int left, int right) {
+		
 
 		if(left < right)  
 		{
