@@ -8,5 +8,4 @@ Step 4: Copy paste the test data from our provided text files or enter your own 
 Step 5: The system will display the input, output (sorted array) and also the run time.
 Step 6: Choose another sorting method or input data, or you can exit by entering 8.
 
-
 //We have used eclipse as our IDE, so our project is done in Java. The test data file names are Randomized_Numbers_1k,10k and 100k.
